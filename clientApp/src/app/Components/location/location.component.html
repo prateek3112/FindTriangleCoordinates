@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div *ngIf="location" class="col-md-12 text-center lg text-success">
+      <h2>
+        Location of Triangle is : {{ location?.rowCalculated
+        }}{{ location?.columnCalculated }}
+      </h2>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="col-md-6">
+        <div>
+          V1x:
+          <input
+            formControlName="AngularV1x"
+            class="form-control"
+            [class.invalid]="
+              form.get('AngularV1x').invalid &&
+              (form.get('AngularV1x').dirty || form.get('AngularV1x').touched)"
+            
+            (change)="change($event)"
+          />
+          V1y:<input
+            formControlName="AngularV1y"
+            class="form-control"
+            [class.invalid]="
+              form.get('AngularV1y').invalid &&
+              (form.get('AngularV1y').dirty || form.get('AngularV1y').touched)"
+            (change)="change($event)"
+          />
+        </div>
+        <div>
+          V2x:
+          <input
+            formControlName="LeftV2x"
+            class="form-control"
+            [class.invalid]="
+              form.get('LeftV2x').invalid &&
+              (form.get('LeftV2x').dirty || form.get('LeftV2x').touched)"
+            (change)="change($event)"
+          />
+          V2y:<input
+            formControlName="LeftV2y"
+            class="form-control"
+            [class.invalid]="
+              form.get('LeftV2y').invalid &&
+              (form.get('LeftV2y').dirty || form.get('LeftV2y').touched)"
+            (change)="change($event)"
+          />
+        </div>
+        <div>
+          V3x:
+          <input
+            formControlName="RightV3x"
+            class="form-control"
+            [class.invalid]="
+              form.get('RightV3x').invalid &&
+              (form.get('RightV3x').dirty || form.get('RightV3x').touched)"
+            (change)="change($event)"
+          />
+          V3y:<input
+            formControlName="RightV3y"
+            class="form-control"
+            [class.invalid]="
+              form.get('RightV3y').invalid &&
+              (form.get('RightV3y').dirty || form.get('RightV3y').touched)"
+            (change)="change($event)"
+          />
+        </div>
+        <br />
+        <br />
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+          Submit
+        </button>
+      </div>
+      
+    </form>
+  </div>
+</div>

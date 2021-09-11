@@ -1,0 +1,65 @@
+<div class="container">
+    <h1></h1>
+  
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="Row">Row:</label>
+        <select
+          formControlName="RowSelected"
+          class="form-control"
+          (change)="change($event)"
+        >
+          <option value="" disabled>Choose Row</option>
+          <option *ngFor="let web of Row">{{ web }}</option>
+        </select>
+        <div
+          *ngIf="f.website?.touched && f.website?.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="f.website?.errors.required">Name is required.</div>
+        </div>
+      </div>
+      <br />
+  
+      <div class="form-group">
+        <label for="Col">Column:</label>
+        <select
+          formControlName="ColSelected"
+          class="form-control"
+          (change)="change($event)"
+        >
+          <option value="" disabled>Choose Column:</option>
+          <option *ngFor="let web of Col">{{ web }}</option>
+        </select>
+        <div
+          *ngIf="f.website?.touched && f.website?.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="f.website?.errors.required">Name is required.</div>
+        </div>
+      </div>
+  
+      <br />
+  
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+        Submit
+      </button>
+    </form>
+  </div>
+  
+  <br /><br />
+  <table *ngIf="data?.coordinates" class="table" style=" text-align: center;">
+    <thead>
+      <tr>
+        <th scope="col">Vertex</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data?.coordinates | keyvalue">
+        <th scope="row">{{ d.key }}</th>
+        <td>{{ d.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
