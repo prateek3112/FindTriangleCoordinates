@@ -14,12 +14,12 @@ export class LocationComponent implements OnInit {
   constructor(private _data : DataService) { }
 
   form = new FormGroup({
-    AngularV1x: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0)]),
-    AngularV1y: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0)]),
-    LeftV2x: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0)]),
-    LeftV2y: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0)]),
-    RightV3x: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0)]),
-    RightV3y: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0)])
+    AngularV1x: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0),Validators.pattern("^[0-9]*$")]),
+    AngularV1y: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0),Validators.pattern("^[0-9]*$")]),
+    LeftV2x: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0),Validators.pattern("^[0-9]*$")]),
+    LeftV2y: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0),Validators.pattern("^[0-9]*$")]),
+    RightV3x: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0),Validators.pattern("^[0-9]*$")]),
+    RightV3y: new FormControl('', [Validators.required,Validators.max(60), Validators.min(0),Validators.pattern("^[0-9]*$")])
   });
 
   ngOnInit(): void {
@@ -59,7 +59,23 @@ export class LocationComponent implements OnInit {
       this.location = data
     }).catch(err=>{
       if(err.status == 400 || err.status== 500){
-        alert("Please Check the Coordinates");
+        console.log(err);
+        this.location = null;
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-right',
+          iconColor: 'red',
+          customClass: {
+            popup: 'colored-toast'
+          },
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true
+        })
+        Toast.fire({
+          icon: 'error',
+          title: err.error
+        })
       }
     });
   }

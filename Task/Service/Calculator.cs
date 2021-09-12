@@ -29,15 +29,15 @@ namespace Task.Service
                 decimal val1 = col / 2M;
                 var bottomY = height - nth;
 
-                decimal topY;
+                int topY;
                 if (type == "left")
                 {
 
                     topY = bottomY + 10;
 
-                    decimal bottomXL = Math.Floor(val1) * 10;
+                    int bottomXL = (int)(Math.Floor(val1) * 10);
 
-                    decimal bottomXR = (Math.Floor(val1) * 10) + 10;
+                    int bottomXR = (int)((Math.Floor(val1) * 10) + 10);
                     coordinates.AngularV1x = bottomXL;
                     coordinates.AngularV1y = bottomY;
                     coordinates.LeftV2x = bottomXL;
@@ -56,7 +56,7 @@ namespace Task.Service
 
 
 
-                    decimal topXL = (Math.Floor(val1) * 10);
+                    int topXL = ((int)(Math.Floor(val1) * 10));
 
                     var topXR = topXL + 10;
 

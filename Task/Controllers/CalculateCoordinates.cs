@@ -24,7 +24,7 @@ namespace Task.Controllers
         }
 
         [HttpGet("getCordinates")]
-        public Triangle getCordinates([FromQuery]char row, int column)
+        public IActionResult getCordinates([FromQuery]char row, int column)
         {
 
             
@@ -88,7 +88,7 @@ namespace Task.Controllers
 
                 triangle.Coordinates = cords;
 
-                return triangle;
+                return Ok(triangle);
 
             }
             catch (Exception)
@@ -100,7 +100,7 @@ namespace Task.Controllers
 
 
         [HttpPost("getLocation")]
-        public Triangle getLocation(SingleTriangleProperties request)
+        public IActionResult getLocation(SingleTriangleProperties request)
         {
             if (request == null)
             {
@@ -112,14 +112,30 @@ namespace Task.Controllers
                 throw new Exception("Please enter Valid Points");
 
             }
-            
+            //if (request.AngularV1x == null || request.AngularV1y == null || request.LeftV2x == 0 || request.LeftV2y == 0 || request.RightV3x == 0 || request.RightV3y == 0)
+            //{
+            //    throw new Exception("Please enter Valid Points");
+
+            //}
+
             try
             {
+                //Checking if Triangle is Even Possible with the given coordinates
+                int A = (int)Math.Pow((double)(request.LeftV2x - request.AngularV1x), 2) + (int)Math.Pow((double)(request.LeftV2y - request.AngularV1y), 2);
+                int B = (int)Math.Pow((double)(request.RightV3x - request.LeftV2x), 2) + (int)Math.Pow((double)(request.RightV3y - request.LeftV2y), 2);
+                int C = (int)Math.Pow((double)(request.RightV3x - request.AngularV1x), 2) + (int)Math.Pow((double)(request.RightV3y - request.AngularV1y), 2);
 
+                if ((A > 0 && B > 0 && C > 0) && (A == (B + C) || B == (A + C) || C == (A + B)))
+                {
+                    Triangle cords = this._calc.FindLocationFromVertices(request);
 
-                Triangle cords = this._calc.FindLocationFromVertices(request);
-
-                return cords;
+                    return Ok(cords);
+                }
+                else
+                {
+                    return BadRequest("Please Enter Valid Coordinates");
+                }
+                    
 
             }
             catch (Exception e)

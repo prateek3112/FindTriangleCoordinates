@@ -19,6 +19,12 @@
             
             (change)="change($event)"
           />
+          <div *ngIf="form.get('AngularV1x').invalid &&
+          (form.get('AngularV1x').dirty || form.get('AngularV1x').touched)" class="alert alert-danger">
+            <div *ngIf="form.get('AngularV1x').errors?.required">Number is required.</div>
+            <div *ngIf="form.get('AngularV1x').errors?.pattern">Enter only Number.</div>
+            <div *ngIf="form.get('AngularV1x').errors?.max">Enter Number less than 60.</div>
+        </div>
           V1y:<input
             formControlName="AngularV1y"
             class="form-control"
@@ -27,6 +33,12 @@
               (form.get('AngularV1y').dirty || form.get('AngularV1y').touched)"
             (change)="change($event)"
           />
+          <div *ngIf="form.get('AngularV1y').invalid &&
+          (form.get('AngularV1y').dirty || form.get('AngularV1y').touched)" class="alert alert-danger">
+            <div *ngIf="form.get('AngularV1y').errors?.required">Number is required.</div>
+            <div *ngIf="form.get('AngularV1y').errors?.pattern">Enter only Number.</div>
+            <div *ngIf="form.get('AngularV1y').errors?.max">Enter Number less than 60.</div>
+        </div>
         </div>
         <div>
           V2x:
@@ -38,6 +50,13 @@
               (form.get('LeftV2x').dirty || form.get('LeftV2x').touched)"
             (change)="change($event)"
           />
+          <div *ngIf="form.get('LeftV2x').invalid &&
+              (form.get('LeftV2x').dirty || form.get('LeftV2x').touched)"
+            (change)="change($event)" class="alert alert-danger">
+            <div *ngIf="form.get('LeftV2x').errors?.required">Number is required.</div>
+            <div *ngIf="form.get('LeftV2x').errors?.pattern">Enter only Number.</div>
+            <div *ngIf="form.get('LeftV2x').errors?.max">Enter Number less than 60.</div>
+        </div>
           V2y:<input
             formControlName="LeftV2y"
             class="form-control"
@@ -46,6 +65,12 @@
               (form.get('LeftV2y').dirty || form.get('LeftV2y').touched)"
             (change)="change($event)"
           />
+          <div *ngIf="form.get('LeftV2y').invalid &&
+          (form.get('LeftV2y').dirty || form.get('LeftV2y').touched)" class="alert alert-danger">
+            <div *ngIf="form.get('LeftV2y').errors?.required">Number is required.</div>
+            <div *ngIf="form.get('LeftV2y').errors?.pattern">Enter only Number.</div>
+            <div *ngIf="form.get('LeftV2y').errors?.max">Enter Number less than 60.</div>
+        </div>
         </div>
         <div>
           V3x:
@@ -57,6 +82,12 @@
               (form.get('RightV3x').dirty || form.get('RightV3x').touched)"
             (change)="change($event)"
           />
+          <div *ngIf="form.get('RightV3x').invalid &&
+          (form.get('RightV3x').dirty || form.get('RightV3x').touched)" class="alert alert-danger">
+            <div *ngIf="form.get('RightV3x').errors?.required">Number is required.</div>
+            <div *ngIf="form.get('RightV3x').errors?.pattern">Enter only Number.</div>
+            <div *ngIf="form.get('RightV3y').errors?.max">Enter Number less than 60.</div>
+        </div>
           V3y:<input
             formControlName="RightV3y"
             class="form-control"
@@ -65,6 +96,12 @@
               (form.get('RightV3y').dirty || form.get('RightV3y').touched)"
             (change)="change($event)"
           />
+          <div *ngIf="form.get('RightV3y').invalid &&
+          (form.get('RightV3y').dirty || form.get('RightV3y').touched)" class="alert alert-danger">
+            <div *ngIf="form.get('RightV3y').errors?.required">Number is required.</div>
+            <div *ngIf="form.get('RightV3y').errors?.pattern">Enter only Number.</div>
+            <div *ngIf="form.get('RightV3y').errors?.max">Enter Number less than 60.</div>
+        </div>
         </div>
         <br />
         <br />

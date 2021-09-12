@@ -1,4 +1,6 @@
-﻿using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
+using Moq;
+
 using System;
 using Task.Controllers;
 using Task.Interface;
@@ -87,12 +89,18 @@ namespace XUnitTestProject1
                 RightV3y = 60
             };
 
+
             
             service.Setup(x => x.FindCoordinates(row,col,10,"right")).Returns(coordinates);
             var calc = new CalculateCoordinates(service.Object);
 
             //act
-            var Result = calc.getCordinates(rownumber, col);
+            var okResult = calc.getCordinates(rownumber, col);
+            var resObj = okResult as OkObjectResult;
+            var actualResult = resObj.Value;
+            var Result = actualResult as Triangle;
+
+            
 
             Assert.Equal(Result.Coordinates, coordinates);
         }
@@ -120,7 +128,10 @@ namespace XUnitTestProject1
             var calc = new CalculateCoordinates(service.Object);
 
             //act
-            var Result = calc.getLocation(request);
+            var okResult = calc.getLocation(request);
+            var resObj = okResult as OkObjectResult;
+            var actualResult = resObj.Value;
+            var Result = actualResult as Triangle;
 
             Assert.Equal(Result, res);
         }
