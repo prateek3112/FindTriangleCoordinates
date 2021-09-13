@@ -84,18 +84,8 @@ namespace Task.Service
             try
             {
 
-                
-
-                //if (request.AngularV1x == request.RightV3x || request.LeftV2x == request.RightV3x  || request.RightV3x == request.RightV3y )
-                //{
-                //    throw new Exception();
-                //}
 
                 Triangle triangle = new Triangle();
-
-
-
-
 
                 if (request.AngularV1y < request.LeftV2y)
                 {
@@ -107,10 +97,6 @@ namespace Task.Service
                     var m = request.AngularV1x / 10;
 
                     triangle.ColumnCalculated = (int)(m * 2) + 1;
-
-
-
-
 
 
                 }

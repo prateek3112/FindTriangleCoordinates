@@ -83,8 +83,8 @@ namespace Task.Controllers
                     triangle.Type = "left";
                 }
 
-                var W = triangle.Type;
-                SingleTriangleProperties cords = this._calc.FindCoordinates(rownumber, column, 10, W);
+                var type = triangle.Type;
+                SingleTriangleProperties cords = this._calc.FindCoordinates(rownumber, column, grid.CellSize, type);
 
                 triangle.Coordinates = cords;
 
@@ -112,12 +112,7 @@ namespace Task.Controllers
                 throw new Exception("Please enter Valid Points");
 
             }
-            //if (request.AngularV1x == null || request.AngularV1y == null || request.LeftV2x == 0 || request.LeftV2y == 0 || request.RightV3x == 0 || request.RightV3y == 0)
-            //{
-            //    throw new Exception("Please enter Valid Points");
-
-            //}
-
+            
             try
             {
                 //Checking if Triangle is Even Possible with the given coordinates
